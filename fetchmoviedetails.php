@@ -47,6 +47,7 @@ echo "
   width: 100%;
   border: 1px solid #ddd;
   font-size: 18px;
+  
 }
 
 #myTable th, #myTable td {
@@ -62,9 +63,13 @@ echo "
   background-color: #f1f1f1;
 }
 
-.myspanstyle:hover {
-	color:blue;
+.myspanstyletable:hover {
+	cursor: pointer;
 }
+.myspanstyle:hover {
+        color:#9999ff;
+}
+
 
 </style>
 <script type=\"text/javascript\">
@@ -72,7 +77,9 @@ echo "
                          window.location.assign(\"fetchmoviedetails.php?filter=\" + filtervar);
                 }
 		function alertFun() {
-			alert('Please login to watch movie');
+			if ( confirm('Please login to watch movie, continue to login screen?'))
+				window.location.assign('login.html');
+			fi
 		}
         </script>
 
@@ -83,7 +90,7 @@ echo "
 	<div class=\"col-lg-1\"></div>
 	<div class=\"col-lg-10\">
 	<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Search for names..\" title=\"Type in a name\"><br>
-         <table id=\"myTable\" class=\"table table-hover\" style=\"border:1px solid;\"><tr style=\"background-color: #f1f1f1;\"><th>Name</th>
+         <table id=\"myTable\" class=\"table table-hover\" style=\"border:1px solid;\" ><tr style=\"background-color: #f1f1f1;\"><th>Name</th>
 	<th>
 	<div class=\"dropdown\">
 		Genre<button class=\"btn dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\"><span class=\"glyphicon glyphicon-filter\"></span>
@@ -105,7 +112,7 @@ if($result)
 			echo "<tr><td><a href=\"watchmovie.php?movieId=$row[0]\" target=\"_self\"><span class=\"glyphicon glyphicon-play-circle\"></span>&nbsp;&nbsp;$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td></tr>";
 		}
 		else {
-			echo "<tr><td class=\"myspanstyle\" onclick=\"alertFun()\"><span class=\"glyphicon glyphicon-play-circle\" ></span>&nbsp;&nbsp;$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td></tr>";
+			echo "<tr><td class=\"myspanstyletable\" onclick=\"alertFun()\"><span class=\"myspanstyle glyphicon glyphicon-play-circle\" ></span>&nbsp;&nbsp;$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td></tr>";
 		}
 	}
 }

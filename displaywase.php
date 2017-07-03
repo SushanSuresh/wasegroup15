@@ -5,7 +5,7 @@ use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 session_start();
 $userId = ( isset ( $_SESSION['userId'] ) && trim ( $_SESSION['userId'] ) != 'NA' )? trim ( $_SESSION['userId'] ) : 'NA' ;
-if ( $userId != "NA" ) {
+if ( $userId != "NA" && $userId != NULL ) {
 	$keyname = $_GET['movieId'] . ".mp4";
 	$bucket = 'kedage';
 	$s3 = S3Client::factory(array(

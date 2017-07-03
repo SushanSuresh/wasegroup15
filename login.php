@@ -3,7 +3,7 @@
         $port           =       "port = 5432";
         $dbname         =       "dbname = testdb";
 	session_start();	
-	$uname		=       $_POST['username'];
+	$uEmail		=       $_POST['emailId'];
 	$upassword	=	$_POST['password'];
 	$loginData = file('../.credentials.txt');
         foreach ($loginData as $line) {
@@ -11,6 +11,7 @@
         }
         $credentials    =       "user = $username password=$password";
 	$eflag = "0";
+	$query = "";
 	
 	echo "<html>
 <head>
@@ -64,16 +65,29 @@
 		$uname = "NA";
         }
 	 if ( $_SESSION[userId] == NULL || $_SESSION[userId] == "NA" ) {
-		$query = "select name from userdetails where password='$upassword' AND name='$uname'";
+		$query = "select name from userdetails where password='$upassword' AND LOWER(email)=LOWER('$uEmail')";
+		$query2 = $query;
+		$result2 = pg_query($query2);
+		if($result2) {
+			while ($row = pg_fetch_row($result2)) {
+				$uname = $row[0];
+			}
+		}
+		else {
+			$eflag = "1" ;
+			$uname = "NA";
+			$query = "select name from userdetails where noneixt='nonexit'";
+		}
 	 }
 	 else {
 		$query = "select name from userdetails where name='$_SESSION[userId]'";	
 	}
 	$result = pg_query($query);
-        if($result){
+        if($result){		
 		 $rowcount = pg_num_rows($result);
 				if ( $_SESSION[userId] == NULL || $_SESSION[userId] == "NA" ) {
 					$_SESSION["userId"] = "$uname";
+					$_SESSION["uEmailId"] = "$uEmail";
 				}
 				else {
 					$uname = $_SESSION["userId"];
@@ -105,6 +119,7 @@
 			session_destroy();
 		echo "<script type=\"text/javascript\">
 			alert('Login Failed, Please check you credentials');
+			setTimeout(\"location.href = 'index.html'\",0);
 			</script>";
         }
         else if ( $eflag == "2" ) {
@@ -113,6 +128,7 @@
                         session_destroy();
                      echo "<script type=\"text/javascript\">
                         alert('Server Busy,  Please tryagian later');
+			setTimeout(\"location.href = 'index.html'\",0);
                         </script>";
         }
 	echo "<br><br>

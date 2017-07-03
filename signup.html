@@ -60,7 +60,7 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-lg-2">UserName :</div>
-								<div class="col-lg-2"><input type="text" name="username" style="width:70%" required/></div>
+								<div class="col-lg-2"><input type="text" name="username" pattern="[A-Za-z].{1,50}" title="only alpha, 1-50 Characters" style="width:70%" required/></div>
 								<div class="col-lg-*"></div>
 							</div>
 							<br>
@@ -68,15 +68,15 @@
 								<div class="col-lg-2">Email Id :</div>
 								<div class="col-lg-2"><input type="email" name="Email" style="width:70%" required /></div>
 								<div class="col-lg-*"></div>
-							</div>
+							</div><br>
 							 <div class="row">
                                                                 <div class="col-lg-2">Phone Number :</div>
-                                                                <div class="col-lg-2"><input type="number" name="pnumber" style="width:70%" required /></div>
+                                                                <div class="col-lg-2"><input type="text" name="pnumber" pattern="[0-9]{10}" title="10 Digits only" style="width:70%" required /></div>
                                                                 <div class="col-lg-*"></div>
                                                         </div>
 							<br><div class="row">
 								<div class="col-lg-2">New Password :</div>
-								<div class="col-lg-2"><input type="password" id="newpassword" name="newpassword" style="width:70%" onchange="clearconfirm()" required/></div>
+								<div class="col-lg-2"><input type="password" id="newpassword" name="newpassword" pattern="(?=.[A-Za-z])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}" title="8 are more characters starts with alpha charecter includes One caps,small and number " style="width:70%" onchange="clearconfirm()" required/></div>
 								<div class="col-lg-2">Confirm New Password :</div>
 								<div class="col-lg-2"><input type="password" id= "cnewpassword" name="cnewpassword" style="width:70%" onchange="validatepass()" required/>&nbsp&nbsp<lable id="pass"><span style="color:red">pasword not matching/empty</span></lable></div>
 								<div class="col-lg-*"></div>

@@ -63,12 +63,20 @@
 		$eflag = "2";
 		$uname = "NA";
         }
-	$query = "select name from userdetails where password='$upassword' AND name='$uname'";
+	 if ( $_SESSION[userId] == NULL || $_SESSION[userId] == "NA" ) {
+		$query = "select name from userdetails where password='$upassword' AND name='$uname'";
+	 }
+	 else {
+		$query = "select name from userdetails where name='$_SESSION[userId]'";	
+	}
 	$result = pg_query($query);
         if($result){
 		 $rowcount = pg_num_rows($result);
 				if ( $_SESSION[userId] == NULL || $_SESSION[userId] == "NA" ) {
 					$_SESSION["userId"] = "$uname";
+				}
+				else {
+					$uname = $_SESSION["userId"];
 				}
 	                	if ($rowcount > 0 && $_SESSION[userId] != NULL && $uname != NULL  ) {
 		                	echo "<li><a href=\"#\"><font color=\"white\"><b>$_SESSION[userId]</b></font></a></li><li><a href=\"logout.php\" onclick=\"destroysessio()\"><span class=\"glyphicon glyphicon-log-out\"></span> Logout</a></li>";

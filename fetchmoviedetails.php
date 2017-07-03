@@ -61,11 +61,19 @@ echo "
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }
+
+.myspanstyle:hover {
+	color:blue;
+}
+
 </style>
 <script type=\"text/javascript\">
                 function changeDivContent(filtervar) {
                          window.location.assign(\"fetchmoviedetails.php?filter=\" + filtervar);
                 }
+		function alertFun() {
+			alert('Please login to watch movie');
+		}
         </script>
 
 </head>
@@ -94,10 +102,10 @@ if($result)
 {
 	while ($row = pg_fetch_row($result)) {
 		if  ( $userId != "NA" && $userId != NULL )  {
-			echo "<tr><td><a href=\"watchmovie.php?movieId=$row[0]\" target=\"_self\">$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td></tr>";
+			echo "<tr><td><a href=\"watchmovie.php?movieId=$row[0]\" target=\"_self\"><span class=\"glyphicon glyphicon-play-circle\"></span>&nbsp;&nbsp;$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td></tr>";
 		}
 		else {
-			echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td></tr>";
+			echo "<tr><td class=\"myspanstyle\" onclick=\"alertFun()\"><span class=\"glyphicon glyphicon-play-circle\" ></span>&nbsp;&nbsp;$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td></tr>";
 		}
 	}
 }

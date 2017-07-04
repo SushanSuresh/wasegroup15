@@ -25,18 +25,47 @@ echo "
         <link rel=\"stylesheet\" href=\"font-awesome/css/font-awesome.min.css\">
         <script src=\"bootstrap/jquery.min.js\"></script>
         <script src=\"bootstrap/js/bootstrap.min.js\"></script>
+	<style>
+		 #myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: white;
+}
+
+.myspanstyletable:hover {
+        cursor: pointer;
+}
+.myspanstyle:hover {
+        color:#9999ff;
+}
+	</style>
 </head>
-<body >
+<body style=\"background-color:transparent\">
 <div class=\"container\" >
 	<div class=\"row\">
 		<div class=\"col-lg-2\"></div>
-		<div class=\"col-lg-5\">
-			<video width=\"400\"  controls controlslist=\"nodownload\" style=\"border:3px solid black\">
+		<div class=\"col-lg-8\">
+			<video width=\"600\"  controls controlslist=\"nodownload\" style=\"border:3px solid black\">
 				<source src=\"displaywase.php?movieId=${movieId}\" type=\"video/mp4\">
 				Your browser does not support HTML5 video.
 			</video>
 		</div>
-		<div class=\"col-lg-5\">";
+		<div class=\"col-lg-2\" style=\"background-color: #f1f1f1;padding:25px\">";
 			 $query = "select * from moviedeatils where name='${movieId}'";
 			$result = pg_query($query);
 			if($result) {
@@ -57,7 +86,11 @@ echo "		</div>
 </html>";
 }
 else {
-	echo "Sorry Login credentials is missing, Please login and try again";
+	
+echo "<script type=\"text/javascript\">
+                        alert('Server Busy,  Please tryagian later');
+                        setTimeout(\"location.href = 'index.html'\",0);
+                        </script>";
 }
 pg_close($conn);
 ?>

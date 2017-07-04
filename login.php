@@ -41,7 +41,7 @@
         </style>
 
 </head>
-<body style=\"padding-top: 70px;\">
+<body style=\"padding-top: 70px;background-image:url('film.jpg');background-repeat:no-repeat;background--position:center;background-size:cover;\">
 <nav class=\"navbar navbar-inverse navbar-fixed-top\">
   <div class=\"container-fluid\">
         <ul class=\"nav navbar-nav\">
@@ -132,7 +132,7 @@
                         </script>";
         }
 	echo "<br><br>
-        <div class=\"container\">
+        <div class=\"container\" style=\"background-color:transparent\">
         <div class=\"row\">
         <div class=\"col-lg-12\">
                 <iframe id=\"myframe\" src=\"fetchmoviedetails.php?filter=All\" allowfullscreen=\"true\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" width=\"100%\" height=\"100%\" frameBorder=\"0\"></iframe>

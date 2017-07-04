@@ -60,7 +60,7 @@ echo "
 }
 
 #myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
+  background-color: white;
 }
 
 .myspanstyletable:hover {
@@ -84,13 +84,13 @@ echo "
         </script>
 
 </head>
-<body >
-	<div class=\"container\">
+<body style=\"background-color:transparent\">
+	<div class=\"container\" style=\"background-color: #f1f1f1;padding:25px\">
 	<div class=\"row\">
 	<div class=\"col-lg-1\"></div>
 	<div class=\"col-lg-10\">
 	<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Search for names..\" title=\"Type in a name\"><br>
-         <table id=\"myTable\" class=\"table table-hover\" style=\"border:1px solid;\" ><tr style=\"background-color: #f1f1f1;\"><th>Name</th>
+         <table id=\"myTable\" class=\"table table-hover\" style=\"border:1px solid;\" bgcolor=\"white\"><tr style=\"background-color: #f1f1f1;\"><th>Name</th>
 	<th>
 	<div class=\"dropdown\">
 		Genre<button class=\"btn dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\"><span class=\"glyphicon glyphicon-filter\"></span>

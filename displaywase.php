@@ -29,6 +29,10 @@ if ( $userId != "NA" && $userId != NULL ) {
 	}
 }
 else {
-       echo "Sorry Login credentials is missing, Please login and try again";
+	
+echo "<script type=\"text/javascript\">
+                        alert('Sorry Login credentials is missing, Please login and try again');
+                        setTimeout(\"location.href = 'index.html'\",0);
+                        </script>";
 }
 ?>

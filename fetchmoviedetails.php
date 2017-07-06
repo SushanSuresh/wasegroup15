@@ -44,7 +44,6 @@ echo "
 }
 	#myTable {
   border-collapse: collapse;
-  width: 100%;
   border: 1px solid #ddd;
   font-size: 18px;
   
@@ -89,6 +88,7 @@ echo "
 	<div class=\"row\">
 	<div class=\"col-lg-1\"></div>
 	<div class=\"col-lg-10\">
+	<div class=\"table-responsive\">
 	<input type=\"text\" id=\"myInput\" onkeyup=\"myFunction()\" placeholder=\"Search for names..\" title=\"Type in a name\"><br>
          <table id=\"myTable\" class=\"table table-hover\" style=\"border:1px solid;\" bgcolor=\"white\"><tr style=\"background-color: #f1f1f1;\"><th>Name</th>
 	<th>
@@ -116,7 +116,7 @@ if($result)
 		}
 	}
 }
-echo "</table>
+echo "</table></div>
 </div>
 <div class=\"col-lg-1\"></div>
 </div></div>
